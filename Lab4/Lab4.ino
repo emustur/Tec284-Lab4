@@ -12,6 +12,8 @@ dht.begin();
 u8x8.begin();
 u8x8.setFlipMode(1);
 u8x8.clear();
+pinMode(5,OUTPUT);
+pinMode(4,OUTPUT);
 }
 void loop() {
   float temp = dht.readTemperature() * 1.8 + 32;
@@ -24,4 +26,16 @@ u8x8.println("Humidity: ");
 u8x8.print(humid);
 u8x8.print("%");
 
+if(humid>70){
+  tone(5,500,500);
+  digitalWrite(4,HIGH);
+  delay(500);
+  digitalWrite(4,LOW);
+  delay(500);
+
 }
+  else{
+    noTone(5);
+    }
+}
+
